@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enunciate xmlns="http://enunciate.codehaus.org/schemas/enunciate-1.27.xsd">
+    <modules>
+        <docs title="jaxrs-cxf-spring"/>
+
+        <basic-app disabled="true"/>
+        <jaxws-ri disabled="true"/>
+        <jersey disabled="true"/>
+        <csharp disabled="true"/>
+        <java-client disabled="true"/>
+        <obj-c disabled="true"/>
+        <c disabled="true"/>
+    </modules>
+    <services>
+        <!--
+            This needs to be the same as where your servlet is mapped or the
+            links in the documentation will not work.
+         -->
+        <rest defaultRestSubcontext="/rest"/>
+    </services>
+    <api-import pattern="com.svanberg.jaxrs.**" />
+</enunciate>
