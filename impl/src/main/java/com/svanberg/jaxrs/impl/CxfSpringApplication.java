@@ -1,8 +1,8 @@
 package com.svanberg.jaxrs.impl;
 
-import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import javax.servlet.ServletContext;
@@ -13,11 +13,10 @@ public class CxfSpringApplication implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
         applicationContext.register(CxfSpringConfiguration.class);
-        applicationContext.refresh();
 
         CXFServlet cxfServlet = servletContext.createServlet(CXFServlet.class);
-        cxfServlet.setBus(applicationContext.getBean(SpringBus.class));
 
+        servletContext.addListener(new ContextLoaderListener(applicationContext));
         servletContext
                 .addServlet("cxf", cxfServlet)
                 .addMapping("/rest/*");
