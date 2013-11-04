@@ -4,6 +4,7 @@ import com.svanberg.jaxrs.api.HelloWorldResource;
 import com.svanberg.jaxrs.domain.Person;
 
 import javax.inject.Named;
+import java.util.Date;
 
 @Named
 public class HelloWorldResourceImpl implements HelloWorldResource {
@@ -19,6 +20,8 @@ public class HelloWorldResourceImpl implements HelloWorldResource {
 
     @Override
     public Person person(String name, int age) {
-        return new Person(name, age);
+        Person person = new Person(name, age);
+        person.setBirthday(new Date(1324141241231L));
+        return person;
     }
 }

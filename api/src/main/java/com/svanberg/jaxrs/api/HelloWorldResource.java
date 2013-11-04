@@ -2,15 +2,15 @@ package com.svanberg.jaxrs.api;
 
 import com.svanberg.jaxrs.domain.Person;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
  * The first thing aliens will encounter when they stumble upon our planet.
  */
 @Path("/hello")
+@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public interface HelloWorldResource {
 
     /**
@@ -40,6 +40,5 @@ public interface HelloWorldResource {
      */
     @GET
     @Path("/person/{name}/{age}")
-    @Produces("application/xml")
     public Person person(@PathParam("name") String name, @PathParam("age") int age);
 }

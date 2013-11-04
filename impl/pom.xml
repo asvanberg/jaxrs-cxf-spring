@@ -17,6 +17,7 @@
         <spring.version>3.2.4.RELEASE</spring.version>
         <log4j2.version>2.0-beta9</log4j2.version>
         <slf4j.version>1.7.5</slf4j.version>
+        <jackson.version>1.9.13</jackson.version>
     </properties>
 
     <dependencies>
@@ -44,6 +45,18 @@
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxrs</artifactId>
             <version>2.7.7</version>
+        </dependency>
+
+        <!-- JSON support -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-xc</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- Spring -->

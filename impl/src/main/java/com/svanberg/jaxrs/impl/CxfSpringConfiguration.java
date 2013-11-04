@@ -1,6 +1,7 @@
 package com.svanberg.jaxrs.impl;
 
 import org.apache.cxf.jaxrs.spring.SpringResourceFactory;
+import org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -33,6 +34,7 @@ public class CxfSpringConfiguration {
         factory.setTempResourceProviders(factories);
         LOG.info("Resources registered: {}", factories.size());
 
+        factory.setProvider(new JacksonJaxbJsonProvider());
         return factory;
     }
 
